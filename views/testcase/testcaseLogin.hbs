@@ -1,0 +1,27 @@
+<h1 style="text-align: center">{{title}}</h1>
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6"title="">
+        <table class="table table-hover" style="font-size: 150%; text-align: center;">
+            <thead class="bg-primary">
+            <tr>
+                <th style="text-align: center">Username</th>
+                <th style="text-align: center">Password</th>
+                <th style="text-align: center">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{username}}</td>
+                <td>{{password}}</td>
+                <td>
+                    {{#if isSuccess}}
+                        <span class="label label-success">Success</span>
+                    {{else}}
+                        <span class="label label-danger">Fail</span>
+                    {{/if}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
