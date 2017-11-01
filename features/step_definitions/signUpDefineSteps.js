@@ -169,8 +169,8 @@ defineSupportCode(function({Given, When, Then}) {
                         return promise.rejected(Error("Fail"));
                     }
                     return value;
-                }).then(function (value) {
                     console.log(value);
+                }).then(function (value) {
                     return true;
                 });
             });
