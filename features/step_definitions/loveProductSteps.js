@@ -28,9 +28,35 @@ defineSupportCode(function ({Given, When, Then}) {
         });
     });
 
+    When('I click my name', function () {
+       var driver = this.driver;
+       return driver.findElement({className: 'dropdown-toggle'}).then(function(element){
+          return element.click().then(function(){
+              return driver.sleep(timeout);
+          });
+       });
+    });
+
+    When('I click my favorite products', function () {
+        var driver = this.driver;
+        return driver.findElement({xpath: "//a[@href='/product/byFavorite']"}).then(function(element){
+            return element.click().then(function(){
+                return driver.sleep(timeout);
+            });
+        });
+    });
+
+    When('I remove product that has id is {string} from my favorite products', function (id) {
+       var driver = this.driver;
+       return driver.findElement({className: 'col-md-1'}).then(function(element) {
+           return element.click().then(function () {
+               return driver.sleep(timeout);
+           });
+       });
+    });
+
    Then('Should be the heart is red', function(){
       var driver = this.driver;
-       driver.sleep(timeout);
       return driver.findElement({id: 'remove-love'}).then(function (element) {
           return driver.sleep(timeout);
       });
@@ -38,9 +64,24 @@ defineSupportCode(function ({Given, When, Then}) {
 
     Then('Should be the heart is empty', function(){
         var driver = this.driver;
-        driver.sleep(timeout);
         return driver.findElement({id: 'add-love'}).then(function (element) {
             return driver.sleep(timeout);
+        });
+    });
+
+    Then('Should be to show product that has id as {string}', function(id){
+        var driver = this.driver;
+        return driver.findElement({xpath: '//a[@href="/product/byUser/removeLove/' + id + '"]'}).then(function (elements) {
+            return webDriver.promise.fullyResolved('Pass');
+        });
+    });
+
+    Then('Should not be to show product that has id as {string}', function(id){
+        var driver = this.driver;
+        return driver.findElement({xpath: '//a[@href="/product/byUser/removeLove/' + id + '"]'}).then(function (elements) {
+            return webDriver.promise.rejected(Error('Remove love fail'));
+        }).catch(function () {
+            return webDriver.promise.fullyResolved('Pass');
         });
     });
 });
