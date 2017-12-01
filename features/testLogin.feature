@@ -3,16 +3,13 @@ Feature: test login function
   Background:
     Given I am on Daugianhanh login page
 
-#Scenario with valid username and password
-  Scenario:
-    When I enter username as "dada"
-    And I enter password as "123456"
+  Scenario Outline:
+    When I enter username as "<username>"
+    And I enter password as "<password>"
     And I click login
-    Then Should be success
+    Then Should be <status>
 
-#Scenario with invalid username and password
-  Scenario:
-    When I enter username as "abcdef"
-    And I enter password as "654321"
-    And I click login
-    Then Should be fail
+    Examples:
+    |  username |  password  |  status  |
+    |    dada   |     123456 |  success |
+    |    abcdef |     654321 |  fail    |

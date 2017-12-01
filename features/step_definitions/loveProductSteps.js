@@ -3,7 +3,7 @@ var {defineSupportCode} = require('cucumber');
 var app = require('../../app');
 
 defineSupportCode(function ({Given, When, Then}) {
-   var timeout = 1000;
+   var timeout = 0;
 
    When('I go to the detail page of product that has id as {string}', function (id) {
        var driver = this.driver;

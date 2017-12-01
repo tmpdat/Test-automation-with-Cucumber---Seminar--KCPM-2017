@@ -4,7 +4,7 @@ var app = require('../../app');
 
 defineSupportCode(function({Given, When, Then}) {
     var oldPrice;
-    var timeout = 1000;
+    var timeout = 0;
 
     When('I go to detail product page of product id as {string}', function (id) {
         var driver = this.driver;

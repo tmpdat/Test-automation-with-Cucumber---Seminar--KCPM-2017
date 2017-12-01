@@ -7,7 +7,7 @@ defineSupportCode(function({Given, When, Then}) {
       username: '',
       password: ''
     };
-    var timeout = 500;
+    var timeout = 0;
     //Login function
     Given('I am on Daugianhanh login page', function() {
         return this.driver.get('http://localhost:3000/account/login');

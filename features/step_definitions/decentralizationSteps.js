@@ -3,7 +3,7 @@ var {defineSupportCode} = require('cucumber');
 var app = require('../../app');
 
 defineSupportCode(function({Given, When, Then}) {
-    var timeout = 500;
+    var timeout = 0;
 
     When('I go to profile page of user has id as {string}', function (text) {
         var driver = this.driver;

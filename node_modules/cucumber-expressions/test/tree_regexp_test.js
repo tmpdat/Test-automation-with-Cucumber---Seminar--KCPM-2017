@@ -5,9 +5,10 @@ const TreeRegexp = require('../src/tree_regexp')
 describe('TreeRegexp', () => {
   it('exposes group source', () => {
     const tr = new TreeRegexp(/(a(?:b)?)(c)/)
-    assert.deepEqual(
-      tr.groupBuilder.children.map(gb => gb.source)[('a(?:b)?', 'c')]
-    )
+    assert.deepEqual(tr.groupBuilder.children.map(gb => gb.source), [
+      'a(?:b)?',
+      'c',
+    ])
   })
 
   it('builds tree', () => {
@@ -63,5 +64,11 @@ describe('TreeRegexp', () => {
     assert.equal(group.value, 'the stdout')
     assert.equal(group.children[0].value, null)
     assert.equal(group.children.length, 1)
+  })
+
+  it('works with flags', () => {
+    const tr = new TreeRegexp(/HELLO/i)
+    const group = tr.match('hello')
+    assert.equal(group.value, 'hello')
   })
 })
