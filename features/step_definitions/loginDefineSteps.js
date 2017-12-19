@@ -15,13 +15,13 @@ defineSupportCode(function({Given, When, Then}) {
 
     When('I enter username as {string}', function (text) {
         account.username = text;
-        var driver = this.driver;
-        return this.driver.findElement({id: 'txtUsername'}, ).then(function(element) {
-            return element.sendKeys(text).then(function () {
-                return driver.sleep(timeout);
-            });
+    var driver = this.driver;
+    return this.driver.findElement({id: 'txtUsername'}, ).then(function(element) {
+        return element.sendKeys(text).then(function () {
+            return driver.sleep(timeout);
         });
     });
+});
 
     When('I enter password as {string}', function (text) {
         account.password = text;
@@ -45,6 +45,7 @@ defineSupportCode(function({Given, When, Then}) {
     Then('Should be success', function () {
         var driver = this.driver;
         var promise = seleniumWebdriver.promise;
+        driver.e
         return this.driver.getCurrentUrl().then(function (rs) {
             var url = 'http://localhost:3200/testcase/login?username=' + account.username + '&pass=' + account.password + '&result=';
             if(rs.toLowerCase().indexOf("http://localhost:3000/home") != -1)
